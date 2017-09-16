@@ -17,3 +17,11 @@ build:
 # 起動
 up:
 	docker-compose up -d
+
+# テーブル生成
+migration:
+	./ace migration:refresh
+
+# シード生成
+seed:
+	./ace db:seed

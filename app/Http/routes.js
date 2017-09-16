@@ -16,5 +16,11 @@
 */
 
 const Route = use('Route')
+const UserModel = use('App/Model/User')
 
 Route.on('/').render('welcome')
+
+Route.get('/user',function * (req,res) {
+  const users = yield UserModel.all()
+  res.json(users)
+})
