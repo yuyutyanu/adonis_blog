@@ -1,6 +1,7 @@
-version: '2'
+version: '3'
 services:
   postgres:
+    container_name: postgres
     restart: always
     image: postgres
     ports:
@@ -11,7 +12,8 @@ services:
       - POSTGRES_DB=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
-  web:
+  app:
+    container_name: app
     build: ./
     volumes:
       - ./:/home/docker/app
