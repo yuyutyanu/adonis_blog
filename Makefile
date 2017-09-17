@@ -41,3 +41,7 @@ watch:
 # test
 test:
 	docker exec -it app npm test
+
+# nyan
+nyan:
+	docker exec -it app npm run nyan
