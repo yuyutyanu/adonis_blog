@@ -4,14 +4,14 @@ const Validator = use('Validator')
 class ArticleController {
 
   * index(req, res) {
-    const users = yield ArticleModel.all()
-    res.json({users})
+    const articles = yield ArticleModel.all()
+    res.json({articles})
   }
 
   * show(req,res) {
     const id = req.param('id')
-    const user = yield ArticleModel.find(id)
-    res.json({user})
+    const article = yield ArticleModel.find(id)
+    res.json({article})
   }
 
   * store(req,res) {
@@ -25,12 +25,17 @@ class ArticleController {
       return false
     }
 
-    const article = yield ArticleModel.create({
-      title: data.title,
-      content: data.content
-    })
+    try {
+      const article = yield ArticleModel.create({
+        title: data.title,
+        content: data.content
+      })
+      res.json({status: 200,article})
+    } catch (error) {
+      res.json({status: 404,message:error.message})
+      throw error
+    }
 
-    res.json({article})
   }
 
   * update(req,res) {
@@ -45,11 +50,16 @@ class ArticleController {
       return false
     }
 
-    const article = yield ArticleModel.find(id)
-    article.fill({title: data.title,content: data.content})
-    yield article.save()
+    try {
+      const article = yield ArticleModel.find(id)
+      article.fill({title: data.title,content: data.content})
+      yield article.save()
+      res.json({status: 200,article})
+    } catch (error) {
+      res.json({status: 404,message:error.message})
+      throw error
+    }
 
-    res.json({article})
   }
 
   * destroy(req,res) {
@@ -62,7 +72,7 @@ class ArticleController {
       res.json({status: 200,article})
 
     } catch (error) {
-      res.json({status: 404})
+      res.json({status: 404,message:error.message})
       throw error
     }
   }
