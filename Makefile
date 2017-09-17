@@ -37,3 +37,7 @@ lint:
 # wabpack watch
 watch:
 	npm run watch
+
+# test
+test:
+	docker exec -it app npm test
