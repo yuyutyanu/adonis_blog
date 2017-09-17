@@ -20,8 +20,8 @@ up:
 
 # テーブル生成
 migration:
-	./ace migration:refresh
+	docker exec -it app ./ace migration:refresh
 
 # シード生成
 seed:
-	./ace db:seed
+	docker exec -it app ./ace db:seed
