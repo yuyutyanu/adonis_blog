@@ -25,3 +25,15 @@ migration:
 # シード生成
 seed:
 	docker exec -it app ./ace db:seed
+
+# standard --fix
+fixer:
+	npm run fixer
+
+#  standard
+lint:
+	npm run lint
+
+# wabpack watch
+watch:
+	npm run watch

@@ -19,10 +19,10 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
-Route.get('/user','UserController.index')
+Route.get('/user', 'UserController.index')
 
-Route.get('/article','ArticleController.index')
-Route.post('/article','ArticleController.store')
-Route.get('/article/:id','ArticleController.show')
-Route.put('/article/:id','ArticleController.update')
-Route.delete('/article/:id','ArticleController.destroy')
+Route.get('/article', 'ArticleController.index')
+Route.post('/article', 'ArticleController.store')
+Route.get('/article/:id', 'ArticleController.show')
+Route.put('/article/:id', 'ArticleController.update')
+Route.delete('/article/:id', 'ArticleController.destroy')

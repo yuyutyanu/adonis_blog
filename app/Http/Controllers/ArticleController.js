@@ -2,22 +2,21 @@ const ArticleModel = use('App/Model/Article')
 const Validator = use('Validator')
 
 class ArticleController {
-
-  * index(req, res) {
+  * index (req, res) {
     const articles = yield ArticleModel.all()
     res.json({articles})
   }
 
-  * show(req,res) {
+  * show (req, res) {
     const id = req.param('id')
     const article = yield ArticleModel.find(id)
     res.json({article})
   }
 
-  * store(req,res) {
+  * store (req, res) {
     const data = req.all()
-    const v = yield Validator.validate(data,{
-      content: 'required',
+    const v = yield Validator.validate(data, {
+      content: 'required'
     })
 
     if (v.fails()) {
@@ -30,19 +29,18 @@ class ArticleController {
         title: data.title,
         content: data.content
       })
-      res.json({status: 200,article})
+      res.json({status: 200, article})
     } catch (error) {
-      res.json({status: 404,message:error.message})
+      res.json({status: 404, message: error.message})
       throw error
     }
-
   }
 
-  * update(req,res) {
+  * update (req, res) {
     const id = req.param('id')
     const data = req.all()
-    const v = yield Validator.validate(data,{
-      content: 'required',
+    const v = yield Validator.validate(data, {
+      content: 'required'
     })
 
     if (v.fails()) {
@@ -52,31 +50,27 @@ class ArticleController {
 
     try {
       const article = yield ArticleModel.find(id)
-      article.fill({title: data.title,content: data.content})
+      article.fill({title: data.title, content: data.content})
       yield article.save()
-      res.json({status: 200,article})
+      res.json({status: 200, article})
     } catch (error) {
-      res.json({status: 404,message:error.message})
+      res.json({status: 404, message: error.message})
       throw error
     }
-
   }
 
-  * destroy(req,res) {
+  * destroy (req, res) {
     const id = req.param('id')
     try {
-
       const article = yield ArticleModel.find(id)
       yield article.delete()
 
-      res.json({status: 200,article})
-
+      res.json({status: 200, article})
     } catch (error) {
-      res.json({status: 404,message:error.message})
+      res.json({status: 404, message: error.message})
       throw error
     }
   }
-
 }
 
 module.exports = ArticleController

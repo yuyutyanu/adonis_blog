@@ -32,6 +32,6 @@ Factory.blueprint('App/Model/User', (fake) => {
 Factory.blueprint('App/Model/Article', (fake) => {
   return {
     title: fake.word(),
-    content: fake.sentence({words: 5}) ,
+    content: fake.sentence({words: 5})
   }
 })
