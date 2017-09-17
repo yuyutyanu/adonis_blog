@@ -81,7 +81,8 @@ module.exports = {
   |
   */
   csrf: {
-    enable: true,
+    // @TODO 検討する
+    enable: false,
     methods: ['POST', 'PUT', 'DELETE'],
     filterUris: [],
     compareHostAndOrigin: true

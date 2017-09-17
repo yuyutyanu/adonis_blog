@@ -21,5 +21,8 @@ Route.on('/').render('welcome')
 
 Route.get('/user','UserController.index')
 
-Route.get('/article','UserController.index')
-Route.get('/article/:id','UserController.show')
+Route.get('/article','ArticleController.index')
+Route.post('/article','ArticleController.store')
+Route.get('/article/:id','ArticleController.show')
+Route.put('/article/:id','ArticleController.update')
+Route.delete('/article/:id','ArticleController.destroy')
