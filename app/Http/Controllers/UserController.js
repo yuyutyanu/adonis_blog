@@ -1,8 +1,12 @@
+const UserModel = use('App/Model/User')
+
 class UserController {
 
-    * greet (request, response) {
-      const id = request.param('user')
-      yield response.sendView('greet',  { id })
-    }
-
+  * index(req, res) {
+    const users = yield UserModel.all()
+    res.json(users)
   }
+
+}
+
+module.exports = UserController
