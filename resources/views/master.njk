@@ -9,14 +9,14 @@
 
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'>
   <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
   <section>
     <div class="__wrapper">
+      <div id="app">
       {% block content %}{% endblock %}
-
+      </div>
       {% block footer %}
         <div class="__footer">
           <ul>
@@ -30,9 +30,9 @@
             </li>
           </ul>
         </div>
-      {% endblock %}
+        {% endblock %}
+        <script type=text/javascript src=/build.js></script>
     </div>
   </section>
-
 </body>
 </html>
