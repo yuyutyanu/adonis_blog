@@ -20,3 +20,6 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 
 Route.get('/user','UserController.index')
+
+Route.get('/article','UserController.index')
+Route.get('/article/:id','UserController.show')

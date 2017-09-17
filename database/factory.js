@@ -28,3 +28,10 @@ Factory.blueprint('App/Model/User', (fake) => {
     password: fake.password()
   }
 })
+
+Factory.blueprint('App/Model/Article', (fake) => {
+  return {
+    title: fake.word(),
+    content: fake.sentence({words: 5}) ,
+  }
+})
