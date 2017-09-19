@@ -34,11 +34,19 @@ test('記事の更新', t => {
   }
   return http.put('/1',payload).then(({status,data})=>{
 	  t.is(status,200);
+  }).catch(({status,data})=>{
+    console.log(status);
+    console.log(data);
+	  t.is(status,500);
   })
 });
 
 test('記事の削除', t => {
   return http.delete('/1').then(({status,data})=>{
 	  t.is(status,200);
+  }).catch(({status,data})=>{
+    console.log(status);
+    console.log(data);
+	  t.is(status,500);
   })
 });

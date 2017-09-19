@@ -5,3 +5,8 @@ storage
 npm-debug.log
 .idea
 .vscode
+.nuxt
+.cache
+dist
+*.iml
+.idea

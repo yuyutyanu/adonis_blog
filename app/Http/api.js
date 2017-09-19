@@ -17,7 +17,14 @@
 
 const Route = use('Route')
 
-require('./api')
+Route.group('api', function () {
 
-Route.any('*', 'NuxtController.render')
+  Route.get('/user', 'UserController.index')
 
+  Route.get('/article', 'ArticleController.index')
+  Route.post('/article', 'ArticleController.store')
+  Route.get('/article/:id', 'ArticleController.show')
+  Route.put('/article/:id', 'ArticleController.update')
+  Route.delete('/article/:id', 'ArticleController.destroy')
+
+}).prefix('api/v1')

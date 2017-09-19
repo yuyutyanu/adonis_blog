@@ -29,9 +29,8 @@ class ArticleController {
         title: data.title,
         content: data.content
       })
-      res.json({status: 200, article})
+      res.json({article})
     } catch (error) {
-      res.json({status: 404, message: error.message})
       throw error
     }
   }
@@ -52,9 +51,8 @@ class ArticleController {
       const article = yield ArticleModel.find(id)
       article.fill({title: data.title, content: data.content})
       yield article.save()
-      res.json({status: 200, article})
+      res.json({article})
     } catch (error) {
-      res.json({status: 404, message: error.message})
       throw error
     }
   }
@@ -65,9 +63,8 @@ class ArticleController {
       const article = yield ArticleModel.find(id)
       yield article.delete()
 
-      res.json({status: 200, article})
+      res.json({article})
     } catch (error) {
-      res.json({status: 404, message: error.message})
       throw error
     }
   }
