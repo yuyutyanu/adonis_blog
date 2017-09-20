@@ -29,15 +29,19 @@ module.exports = {
   },
   plugins: [
     '~/plugins/element-ui.js',
+    '~/plugins/http.js',
   ],
   /*
   ** Global CSS
   */
-  css: ['~assets/css/main.css'],
+  css: [
+    '~assets/css/main.css',
+    'element-ui/lib/theme-default/index.css'
+  ],
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#744d82' },
+  loading: { color: '#fff' },
   /*
   ** Point to resources
   */

@@ -1,18 +1,24 @@
 <template>
   <section class="container">
-    <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
-    <h1 class="title">
-      Universal Vue.js Applications Framework
-    </h1>
-    <nuxt-link class="button" to="/about">
-      About page
-    </nuxt-link>
+    <my-article v-for="article in articles" :article="article" :key="article.id"/>
   </section>
 </template>
 
-<style scoped>
-.title
-{
-  margin: 50px 0;
-}
-</style>
+<script>
+  import MyArticle from '~/components/Article.vue'
+  export default {
+    components:{
+      MyArticle
+    },
+    computed:{
+      articles(){
+        return this.$store.state.articles
+      }
+    },
+    fetch ({store, params}) {
+      if (!store.state.articles) {
+        return store.dispatch('getArticles')
+      }
+    }
+  }
+</script>

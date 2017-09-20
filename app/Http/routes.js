@@ -20,4 +20,3 @@ const Route = use('Route')
 require('./api')
 
 Route.any('*', 'NuxtController.render')
-

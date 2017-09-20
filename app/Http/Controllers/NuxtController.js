@@ -5,7 +5,6 @@ const Config = use('Config')
 const { Nuxt, Builder } = require('nuxt')
 
 class NuxtController {
-
   constructor () {
     let config = Config.get('nuxt')
     config.dev = Env.get('NODE_ENV') === 'development'
@@ -20,4 +19,4 @@ class NuxtController {
   }
 }
 
-module.exports = new NuxtController
+module.exports = new NuxtController()
