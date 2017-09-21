@@ -9,6 +9,14 @@ const store = () => new Vuex.Store({
     setArticles (state, articles) {
       state.articles = articles
     }
+  },
+  actions: {
+    getArticles ({ app,commit }) {
+      return app.$http.get('/article').then(({data}) => {
+        const { articles } = data
+        commit('setArticles', articles)
+      })
+    }
   }
 })
 

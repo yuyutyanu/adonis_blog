@@ -19,6 +19,7 @@
       if (!store.state.articles) {
         const { data } = await app.$http.get('/article')
         store.commit('setArticles', data.articles)
+        // await store.dispatch('getArticles')
       }
     }
   }
