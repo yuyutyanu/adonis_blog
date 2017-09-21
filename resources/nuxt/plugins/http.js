@@ -17,4 +17,6 @@ http.install = (Vue, options) => {
 
 Vue.use(http)
 
-export default http
+export default ({ app, isClient, store }) => {
+  app.$http = http.factory()
+}

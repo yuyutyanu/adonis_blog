@@ -13,6 +13,7 @@
         <p>{{article.content}}</p>
         <span>{{article.updated_at}}</span>
       </div>
+      <nuxt-link to="/"><el-button>記事一覧へ</el-button></nuxt-link>
     </section>
   </div>
 </template>
@@ -20,8 +21,8 @@
 <script>
 import axios from 'axios'
 export default {
-  async asyncData ({params}) {
-    const { data } = await axios.get(`http://0.0.0.0:3333/api/v1/article/${params.id}`)
+  async asyncData ({app, params}) {
+    const { data } = await app.$http.get(`article/${params.id}`)
     return { article: data.article }
   }
 }

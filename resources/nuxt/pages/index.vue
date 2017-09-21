@@ -15,9 +15,10 @@
         return this.$store.state.articles
       }
     },
-    fetch ({store, params}) {
+    async fetch ({app, store, params}) {
       if (!store.state.articles) {
-        return store.dispatch('getArticles')
+        const { data } = await app.$http.get('/article')
+        store.commit('setArticles', data.articles)
       }
     }
   }
