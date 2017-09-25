@@ -16,7 +16,6 @@ jobs:
 
     steps:
       - checkout
-      - run: ls /var/www/html
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -39,6 +38,7 @@ jobs:
             /var/www/html/./ace migration:refresh
             /var/www/html/./ace db:seed
       # run tests!
+      - run: nodemon server.js
       - run: yarn test
 
 
