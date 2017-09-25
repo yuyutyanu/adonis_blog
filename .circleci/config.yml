@@ -7,13 +7,12 @@ jobs:
           POSTGRES_DB=root
           POSTGRES_PASSWORD=root
           POSTGRES_USER=root
-      - image: node:8.5.0
+      - image: circleci/node:7.10
     working_directory: /var/www/html
     steps:
       - checkout
       - run: node -v
-      - run: npm i -g npm@5.1.*
-      - run: npm i
+      - run: yarn install
       - run:
           name: Initialize Database
           command: |
