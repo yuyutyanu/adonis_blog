@@ -13,6 +13,7 @@ jobs:
     working_directory: /var/www/html
 
     steps:
+      - checkout
       - run: ls /var/www/html
       # Download and cache dependencies
       - restore_cache:
