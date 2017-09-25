@@ -37,7 +37,7 @@ jobs:
             /var/www/html/./ace db:seed
       # run tests!
       - run: node server.js &
-      - run: ps -aux | grep node
+      - run: jobs
       - run: yarn test
 
 
