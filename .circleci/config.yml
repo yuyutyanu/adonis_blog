@@ -11,6 +11,7 @@ jobs:
     working_directory: /var/www/html
     steps:
       - checkout
+      - run: node -v
       - run: npm i -g npm@5.1.*
       - run: npm i
       - run:
