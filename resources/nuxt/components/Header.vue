@@ -5,3 +5,13 @@
     </el-menu>
   </div>
 </template>
+
+<script>
+export default {
+  computed:{
+    isLogin(){
+      return this.$store.state.isLogin
+    }
+  }
+}
+</script>

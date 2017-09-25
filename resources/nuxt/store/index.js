@@ -3,20 +3,19 @@ import Vuex from 'vuex'
 const store = () => new Vuex.Store({
   state: {
     articles: null,
-    counter: 0
+    isLogin: false,
+    token: null
   },
   mutations: {
     setArticles (state, articles) {
       state.articles = articles
-    }
-  },
-  actions: {
-    getArticles ({ app,commit }) {
-      return app.$http.get('/article').then(({data}) => {
-        const { articles } = data
-        commit('setArticles', articles)
-      })
-    }
+    },
+    login (state) {
+      state.isLogin = true
+    },
+    logout (state) {
+      state.isLogin = false
+    },
   }
 })
 

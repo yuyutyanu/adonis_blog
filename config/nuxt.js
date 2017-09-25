@@ -29,7 +29,7 @@ module.exports = {
   },
   plugins: [
     '~/plugins/element-ui.js',
-    '~/plugins/http.js',
+    '~plugins/http.js',
   ],
   /*
   ** Global CSS
