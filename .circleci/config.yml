@@ -4,13 +4,13 @@ jobs:
     docker:
       - image: node:8.5.0
         environment:
-          DB_HOST=localhost
+          DB_HOST: localhost
       # specify the version you desire here
       - image: postgres
         environment:
-          POSTGRES_DB=root
-          POSTGRES_PASSWORD=root
-          POSTGRES_USER=root
+          POSTGRES_DB: root
+          POSTGRES_PASSWORD: root
+          POSTGRES_USER: root
 
     working_directory: /var/www/html
 
@@ -38,7 +38,7 @@ jobs:
             /var/www/html/./ace migration:refresh
             /var/www/html/./ace db:seed
       # run tests!
-      - run: nodemon server.js
+      - run: yarn serve:dev
       - run: yarn test
 
 
