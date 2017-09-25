@@ -3,12 +3,22 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: node:8.5.0
       - image: postgres
         environment:
           POSTGRES_DB=root
           POSTGRES_PASSWORD=root
           POSTGRES_USER=root
+      - image: node:8.5.0
+        environment:
+          HOST=0.0.0.0
+          NODE_ENV=development
+          CACHE_VIEWS=false
+          DB_CONNECTION=pg
+          DB_HOST=localhost
+          DB_PORT=5432
+          DB_USER=root
+          DB_PASSWORD=root
+          DB_DATABASE=root
 
     working_directory: /var/www/html
 
