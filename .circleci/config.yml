@@ -36,7 +36,7 @@ jobs:
             /var/www/html/./ace migration:refresh
             /var/www/html/./ace db:seed
       # run tests!
-      - run: yarn serve:dev &
+      - run: npm run serve
       - run: yarn test
 
 
