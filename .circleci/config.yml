@@ -8,25 +8,32 @@ jobs:
           POSTGRES_PASSWORD=root
           POSTGRES_USER=root
       - image: node:8.5.0
+
     working_directory: /var/www/html
+
     steps:
       - checkout
+
       # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
+
       - run: node -v
       - run: yarn --varsion
       - run: yarn install
+
         - save_cache:
             paths:
               - node_modules
             key: v1-dependencies-{{ checksum "package.json" }}
+
       - run:
           name: Initialize Database
           command: |
             ./ace migration:refresh
             ./ace db:seed
+
       - run: yarn test
