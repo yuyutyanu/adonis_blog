@@ -1,24 +1,38 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
 version: 2
 jobs:
   build:
     docker:
-      - image: postgres
-        environment:
-          POSTGRES_DB=root
-          POSTGRES_PASSWORD=root
-          POSTGRES_USER=root
+      # specify the version you desire here
       - image: circleci/node:7.10
-        environment:
-          PATH: "${PATH}:var/www/html/node_modules/.bin"
-    working_directory: /var/www/html
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
     steps:
       - checkout
-      - run: node -v
-      - run: yarn --varsion
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
       - run: yarn install
-      - run:
-          name: Initialize Database
-          command: |
-            ./ace migration:refresh
-            ./ace db:seed
-      - run: npm run test
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # run tests!
+      - run: yarn test
+
