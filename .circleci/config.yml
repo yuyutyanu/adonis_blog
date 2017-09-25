@@ -10,6 +10,7 @@ jobs:
       - image: node:8.5.0
     working_directory: /var/www/html
     steps:
+      - checkout
       - run: npm i -g npm@5.1.*
       - run: npm i
       - run:
