@@ -13,7 +13,6 @@ jobs:
     working_directory: /var/www/html
 
     steps:
-      - checkout
       - run: ls /var/www/html
       # Download and cache dependencies
       - restore_cache:
@@ -33,8 +32,8 @@ jobs:
       - run:
           name: Initialize Database
           command: |
-            /var/www/html/adonis_blog/./ace migration:refresh
-            /var/www/html/adonis_blog/./ace db:seed
+            /var/www/html/./ace migration:refresh
+            /var/www/html/./ace db:seed
       # run tests!
       - run: yarn test
 
